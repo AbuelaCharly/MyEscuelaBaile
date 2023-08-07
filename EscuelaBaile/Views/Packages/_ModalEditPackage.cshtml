@@ -1,0 +1,30 @@
+﻿
+
+
+<div class="modal fade" id="modal-edit-package" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-edit-package-title">EDIT PACKAGE</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-txtNameCreatePackage">Lessons: </label>
+                        <input type="number" id="nameEditPackage"
+                               placeholder="Code" data-bind="value: name">
+                        <label for="recipient-txtPriceCreatePackage"> Price:  </label>
+                        <input type="number" id="priceEditPackage"
+                               placeholder="Price" data-bind="value: price"> €
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button data-bind="{click: prepareDeletePackage}" type="button" class="btn btn-secondary" data-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-primary" onclick="editPreparePackage()">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>

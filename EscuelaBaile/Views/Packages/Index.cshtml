@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewData["Title"] = "Packages";
+}
+
+<link rel="stylesheet" href="~/css/Packages/packages.css" asp-append-version="true" />
+
+
+<div class="text-center">
+    <h1 class="display-4">Packages</h1>
+</div>
+
+
+
+<div id="container-list-packages" class="text-center">
+
+    <form>
+        <table id="form" data-bind="hidden: loading">
+            <tr>
+                <td> Lessons <input type="number" name="name" id="name" /></td>
+
+                <td> Price <input type="number" name="price" id="price" /></td>
+                <td><button type="button" class="btn btn-primary" onclick="addPackageToList()">New Package</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <hr />
+    <table class="text-start" data-bind="foreach: package">
+
+        <tr>
+            <td width="150px"> Lessons: <span class="fw-bold elSpan" data-bind="text: name"></span></td>
+            <td width="150px"> Price: <span data-bind="text: price"></span>€</td>
+            <td><input type="button" value="Edit" data-bind="click: getPackage" /> </td>
+
+            <!--  <td width="150px" style="border: 1px solid red"><span data-bind="text: id"></span>€</td> -->
+
+
+        </tr>
+
+
+    </table>
+
+
+
+
+    <div data-bind="visible: loading" class="spinner-border">
+        <span class="visually-hidden">Cargando...</span>
+    </div>
+
+    <div data-bind="visible: noPackages">
+        The are no packages created
+    </div>
+
+</div>
+
+
+<partial name="_ModalEditPackage" />
+
+@section Scripts{
+
+
+    <script src="~/js/Packages.js" asp-append-version="true"></script>
+    <script src="~/js/utilities.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script>
+
+        const urlPackage = "/api/packages";
+
+        const modalEditPackage = document.getElementById('modal-edit-package');
+        const modalEditPackageBootstrap = new bootstrap.Modal(modalEditPackage);
+
+
+
+        //CREATES THE LIST OF PACKAGES.
+        // Modelo de JS
+        function packageListViewModelFn() {
+            var self = this;
+            self.package = ko.observableArray([]),
+                self.loading = ko.observable(true),
+
+                //Si la longitud es 0 noPackages is true.
+                self.noPackages = ko.pureComputed(function () {
+                    if (self.loading()) {
+                        return false;
+                    }
+
+                    return self.package().length === 0;
+                })
+
+            console.log(self.package().length);
+        }
+
+
+
+        const packageListViewModel = new packageListViewModelFn();
+
+
+
+
+        function packageViewModel({ id, packageCode, price }) {
+            var self = this;
+            self.id = ko.observable(id);
+            self.name = ko.observable(packageCode);
+            self.price = ko.observable(price);
+
+
+        }
+
+
+        //EDIT PACKAGE MODEL
+        const editPackageViewModel = {
+
+            id:0,
+            name: ko.observable(''),
+            price: ko.observable('')
+        }
+
+        
+
+
+        getPackages();
+
+
+
+        ko.applyBindings(packageListViewModel, document.getElementById('container-list-packages'));
+        ko.applyBindings(editPackageViewModel, document.getElementById('modal-edit-package'));
+
+
+    </script>
+
+}
+

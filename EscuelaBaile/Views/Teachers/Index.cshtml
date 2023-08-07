@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "TeachersList";
+}
+
+<link rel="stylesheet" href="~/css/Teachers/TeachersList.css" asp-append-version="true" />
+
+
+<div class="text-center">
+    <h1 class="display-4">Teachers</h1>
+</div>
+
+
+
+<div id="container-list-teachers" class="text-center">
+
+    <form>
+        <table id="form" data-bind="hidden: loading">
+            <tr>
+                <td> Name <input type="text" name="name" id="name" /></td>
+
+                <td> Surname <input type="text" name="surname" id="surname" /></td>
+
+                <td> Phone <input type="number" name="phone" id="phone" /></td>
+
+                <td> Email <input type="email" name="email" id="email" /></td>
+
+                <td><button type="button" class="btn btn-primary" onclick="addTeacherToList()">New Teacher</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <hr />
+    <table class="text-start" data-bind="foreach: teacher">
+
+        <tr>
+            <td> Name: <span class="fw-bold elSpan" data-bind="text: name"></span></td>
+            <td> Surname: <span data-bind="text: surname"></span></td>
+            <td> Phone: <span data-bind="text: phone"></span></td>
+            <td> Email: <span data-bind="text: email"></span></td>
+            <td><input type="button" value="Edit" data-bind="click: getTeacher" /> </td>
+
+            <!--  <td width="150px" style="border: 1px solid red"><span data-bind="text: id"></span>€</td> -->
+
+
+        </tr>
+
+
+    </table>
+
+
+
+
+    <div data-bind="visible: loading" class="spinner-border">
+        <span class="visually-hidden">Cargando...</span>
+    </div>
+
+    <div data-bind="visible: noTeachers">
+        The are no teachers created
+    </div>
+
+</div>
+
+
+@section Scripts{
+
+
+    <script src="~/js/Teachers.js" asp-append-version="true"></script>
+    <script src="~/js/utilities.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script>const urlTeachers = "/api/teachers";
+
+      //  const modalEditTeacher = document.getElementById('modal-edit-package');
+      //  const modalEditPackageBootstrap = new bootstrap.Modal(modalEditPackage);
+
+
+
+        //CREATES THE LIST OF PACKAGES.
+        // Modelo de JS
+        function teacherListViewModelFn() {
+            var self = this;
+            self.teachers = ko.observableArray([]),
+                self.loading = ko.observable(true),
+
+                //Si la longitud es 0 noPackages is true.
+                self.noTeachers = ko.pureComputed(function () {
+                    if (self.loading()) {
+                        return false;
+                    }
+
+                    return self.teachers().length === 0;
+                })
+
+            
+        }
+
+
+
+        const teacherListViewModel = new teacherListViewModelFn();
+
+
+
+
+        function teacherViewModel({ id, name, surname, phone, email, crationDate }) {
+            var self = this;
+            self.id = ko.observable(id);
+            self.name = ko.observable(name);
+            self.surname = ko.observable(surname);
+            self.phone = ko.observable(phone);
+            self.email = ko.observable(email);
+            self.crationDate = (creationDate);
+
+        }
+
+
+        //EDIT TEACHER MODEL
+        const editTeacherViewModel = {
+
+            id: 0,
+            phone: ko.observable(''),
+            email: ko.observable('')
+        }
+
+
+
+
+        getTeachers();
+
+
+
+        ko.applyBindings(teachersListViewModel, document.getElementById('container-list-teachers'));
+        ko.applyBindings(editTeacherViewModel, document.getElementById('modal-edit-teacher'));</script>
+
+}

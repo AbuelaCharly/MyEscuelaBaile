@@ -1,0 +1,52 @@
+﻿<Properties StartupConfiguration="{13ED1ADE-15C0-4F18-B6BC-8BFE7E76223D}|https">
+  <MonoDevelop.Ide.ItemProperties.EscuelaBaile PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EscuelaBaile/wwwroot/js/Teachers.js">
+    <Files>
+      <File FileName="EscuelaBaile/Views/Teachers/Index.cshtml" Line="132" Column="91" />
+      <File FileName="EscuelaBaile/Entities/TeachersList.cs" Line="1" Column="1" />
+      <File FileName="EscuelaBaile/Controllers/TeachersController.cs" />
+      <File FileName="EscuelaBaile/Views/Packages/Index.cshtml" Line="134" Column="1" />
+      <File FileName="EscuelaBaile/wwwroot/js/Teachers.js" Line="9" Column="23" />
+      <File FileName="EscuelaBaile/wwwroot/js/Packages.js" />
+      <File FileName="EscuelaBaile/Program.cs" />
+      <File FileName="EscuelaBaile/Services/AutomaperProfiles.cs" />
+      <File FileName="EscuelaBaile/Models/AddPackageViewModel.cs" />
+      <File FileName="EscuelaBaile/Entities/Package.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="EscuelaBaile" expanded="True">
+            <Node name="EscuelaBaile" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Entities" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Packages" expanded="True" />
+                <Node name="Shared" expanded="True" />
+                <Node name="Teachers" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True">
+                  <Node name="Packages" expanded="True" />
+                </Node>
+                <Node name="js" expanded="True">
+                  <Node name="Teachers.js" selected="True" />
+                </Node>
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
